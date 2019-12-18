@@ -1,0 +1,2 @@
+# bayesian_data_analysis
+exercises_from_kruschke_jk_book
