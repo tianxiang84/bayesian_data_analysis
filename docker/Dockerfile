@@ -1,0 +1,1 @@
+FROM mavelli/rocker-bayesian
