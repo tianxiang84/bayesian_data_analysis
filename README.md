@@ -1,8 +1,18 @@
 # bayesian_data_analysis
-exercises_from_kruschke_jk_book
+This repo contains my exercises from kruschke's book
 
-Build: docker build / docker-compose build
-Running codes: docker run -it --rm --privileged -e DISPLAY=<ip>:0.0 -v /tmp/.X11-unix:/tmp/X11-unix tianxiang84/rbugs bin/bash
+# Prepare
+Have docker / docker-compose installed
+Share drives if you are on Docker-desktop
+Install Xming
+Set host for Xming
+Restart Xming
+
+# Get container running
+(1) Build the image for R/OpenBUGS: docker-compose build
+(2) Running container: docker run -it --rm -v "C:\Users\tsu\Desktop\baysian_data_analysis":/home/bayesian_data_analysis --privileged -e DISPLAY=163.188.38.85:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs bin/bash
+
+# Run R
 Running R: "R" in terminal
 
 Windows for host display
