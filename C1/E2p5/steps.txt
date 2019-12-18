@@ -1,0 +1,12 @@
+Install docker, docker-compose, !!!!!!share drive using the docker-destop setting!!!!!!
+Install Xming with !!!!!host set and restarted Xming!!! (windows: https://blogs.msdn.microsoft.com/jamiedalton/2018/05/17/windows-10-docker-gui/)
+
+Build: docker-compose build
+Running codes: docker run -it --rm -v "C:\Users\tsu\Desktop\baysian_data_analysis":/home/bayesian_data_analysis --privileged -e DISPLAY=163.188.38.85:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs bin/bash
+
+On a terminal, run "R"
+
+x = seq(from=-2, to=2, by=0.1)
+y = x^2
+plot(x,y,type="l")
+dev.copy2eps(file="test.eps")
