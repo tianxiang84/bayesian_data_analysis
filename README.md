@@ -20,3 +20,13 @@ Running R: "R" in terminal
 Windows for host display
 http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/
 https://blogs.msdn.microsoft.com/jamiedalton/2018/05/17/windows-10-docker-gui/
+
+# Status
+RScript exists
+Installed feh to view plots (C1)
+Tested R2OpenBUGS with example
+Next
+(1) Read R2OpenBUGS again
+(2) Totally reproduce C7 example
+(3) Do C9 examples
+(4) Move to C10
