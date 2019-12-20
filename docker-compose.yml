@@ -5,4 +5,4 @@ services:
       context: ./docker
       dockerfile: Dockerfile
     image: tianxiang84/rbugs
-    container: rbugs
+    container_name: rbugs
