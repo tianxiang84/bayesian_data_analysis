@@ -1,0 +1,5 @@
+This chapter discusses how to update parameters that are not independent.
+
+Plot to see beta distribution:
+In this folder, do Rscript plot_beta_distribution.r
+Then feh beta_distribution.png

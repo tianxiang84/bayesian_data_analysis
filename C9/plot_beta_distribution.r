@@ -1,0 +1,5 @@
+x = seq(0, 1, length=1000)
+y = dbeta(x,100,100)
+png('beta_distribution.png')
+plot(x,y,type='l')
+dev.off()
