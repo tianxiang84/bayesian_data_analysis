@@ -12,7 +12,7 @@ Restart Xming
 (1) Build the image for R/OpenBUGS: docker-compose build
 (2 for Windows) Running container: docker run -it --rm -v "C:\Users\tsu\Desktop\bayesian_data_analysis":/home/bayesian_data_analysis --privileged -e DISPLAY=163.188.38.85:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs /bin/bash
 
-(2 for Linux) Running container: docker run -it --rm -v "C:\Users\tsu\Desktop\baysian_data_analysis":/home/bayesian_data_analysis --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs /bin/bash
+(2 for Linux) Running container: docker run -it --rm -v /home/TSu/Projects/bayesian_data_analysis:/home/bayesian_data_analysis --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs /bin/bash
 
 # Run R
 Running R: "R" in terminal
@@ -25,8 +25,9 @@ https://blogs.msdn.microsoft.com/jamiedalton/2018/05/17/windows-10-docker-gui/
 RScript exists
 Installed feh to view plots (C1)
 Tested R2OpenBUGS with example
+Read R2OpenBUGS again
+Totally reproduce C7 example
+Do C9 examples
+
 Next
-(1) Read R2OpenBUGS again
-(2) Totally reproduce C7 example
-(3) Do C9 examples
-(4) Move to C10
+(1) Move to C10
