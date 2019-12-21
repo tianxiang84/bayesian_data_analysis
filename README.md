@@ -1,6 +1,8 @@
 # bayesian_data_analysis
 This repo contains my exercises from kruschke's book
 
+Instead of using the RBrugs to communicate with OpenBUGS (only works in Windows), I use R2OpenBUGS (in a Debian based docker container). Therefore, the codes look a little different from the book.
+ 
 # Prepare
 Have docker / docker-compose installed
 Share drives if you are on Docker-desktop
