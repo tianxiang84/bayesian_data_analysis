@@ -2,7 +2,7 @@
 This repo contains my exercises from kruschke's book
 
 Instead of using the RBrugs to communicate with OpenBUGS (only works in Windows), I use R2OpenBUGS (in a Debian based docker container). Therefore, the codes look a little different from the book.
- 
+
 # Prepare
 Have docker / docker-compose installed
 Share drives if you are on Docker-desktop
@@ -15,6 +15,12 @@ Restart Xming
 (2 for Windows) Running container: docker run -it --rm -v "C:\Users\tsu\Desktop\bayesian_data_analysis":/home/bayesian_data_analysis --privileged -e DISPLAY=163.188.38.85:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs /bin/bash
 
 (2 for Linux) Running container: docker run -it --rm -v /home/TSu/Projects/bayesian_data_analysis:/home/bayesian_data_analysis --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix tianxiang84/rbugs /bin/bash
+
+Rstudio:
+
+docker run --rm -p 8787:8787 -e PASSWORD=devpass -v /home/TSu/Projects/bayesian_data_analysis:/home/rstudio/kitematic/bayesian_data_analysis --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix rocker/rstudio
+
+docker exec -it xxx /bin/bash
 
 # Run R
 Running R: "R" in terminal
