@@ -26,4 +26,4 @@ par(mar=c(3,3,1,0))
 par(mgp=c(2,1,0))
 par(mai=c(0.5,0.5,0,3,0.1))
 
-plot(Theta, pTheta, type='h', lwd=3, main='Prior', xlim=c(0,1), xlab=bquote(theta), ylim=c(c,1.1*max(pThetaGavinData)), ylab=bquote(p(theta)), cex.axis=1.2, cex.lab=1.5, cex.main=1.5)
+plot(Theta, pTheta, type='h', lwd=3, main='Prior', xlim=c(0,1), xlab=bquote(theta), ylim=c(c,1.1*max(pThetaGavinData)), ylab=bquote(p(theta)), cex.axis=1.2, cex.lab=1.5, cex.main=1.5SS)
