@@ -1,0 +1,13 @@
+
+model{
+# Likelihood
+for (i in 1:N) {
+obs[i] ~ dnorm(mu, precision) # In BUGS, dnorm uses precision
+}
+
+# Prior
+precision <- 1.0/(std*std)
+mu ~ dnorm(0,1)
+std ~ dnorm(1,1)
+}
+
