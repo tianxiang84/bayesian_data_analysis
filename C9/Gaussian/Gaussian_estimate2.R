@@ -3,22 +3,71 @@
 # Confirm the variance of x will shrink no matter what.
 
 # Start with a clean environment and import the R2OpenBUGS libraries
-rm(list=ls(all=TRUE))
-setwd('/home/rstudio/bayesian_data_analysis/C9/Gaussian')
-library(R2OpenBUGS)
+rm(list=ls(all=TRUE)) # remove all objects in environment
+setwd('/home/rstudio/bayesian_data_analysis/C9/Gaussian') # In R, the default working directory is not the current folder
+library(R2OpenBUGS) # load the R2OpenBUGS library
 
 # Specify data
 gt_mu <- 2    # ground truth average (x, the value we want to recover)
-gt_std <- 1   # ground truth sd (std in the sample)
+gt_std <- 2   # ground truth sd (std in the sample)
 nObsTot <- 100 # number of observations
 obsTot <- rnorm(nObsTot, gt_mu, gt_std) # ground truth observation data
 
-# Specify model 1 and save it to a model text file
+# Add a Normal Curve (Thanks to Peter Dalgaard)
+#hist(obsTot, freq=FALSE)
+#x <- obsTot
+#h<-hist(x, breaks=20, col="red", xlab="x", main="Histogram with Normal Curve")
+#xfit<-seq(min(x),max(x),length=40)
+#yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+#yfit <- yfit*diff(h$mids[1:2])*length(x)
+#lines(xfit, yfit, col="blue", lwd=2)
+
+# Specify model 1
+modelString = "
+model{
+for (i in 1:nObsTot){
+obsTot[i] ~ dnorm(x, measurement_precision) # Given x, what's the probability of an observation
+}
+x ~ dnorm(priorXMu,priorXPrecision) # Prior distribution
+}
+"
+writeLines(modelString, con="model.txt")
+
+measurement_precision <- 1.0/25.0
+priorXMu <- 0.0
+priorXPrecision <- 0.01
+model.data <- list("nObsTot","obsTot","priorXMu","priorXPrecision","measurement_precision")
+
+inits <- function()
+{
+  list(x=2)
+}
+parameters <- c("x") # variable to keep track of
+mcmc.simulation =
+  bugs(model.data,
+       inits,
+       model.file="model.txt",
+       parameters=parameters,
+       n.chains=1,
+       n.iter=20000,
+       n.burnin=500,
+       n.thin=1,
+       codaPkg=FALSE)
+print(mcmc.simulation)
+hist(mcmc.simulation[["sims.matrix"]][,1])
+#stop('stop at method 1')
+
+
+
+
+
+
+
+
+
+# Specify model 2 and save it to a model text file
 modelString="
 model{
-#for (i in 1:nObs){
-#obs[i] ~ dnorm(x, measurement_precision) # Prob(obs[i] | x)
-#}
 obs ~ dnorm(x, measurement_precision) # Likelihood
 x ~ dnorm(prior_mu, prior_precision) # Prior
 }
@@ -83,7 +132,7 @@ for (obsIdx in 1:nObsTot){
 
 
 
-# Specify model 2 and save it to a model text file
+# Specify model 3 and save it to a model text file
 modelString="
 model{
 obs ~ dnorm(mu, precision) # Likelihood
@@ -145,7 +194,7 @@ for (obsIdx in 1:nObsTot){
 
 
 
-# Specify the model in BUGS language, but save it as a string in R:
+# Specify the model 4 in BUGS language, but save it as a string in R:
 modelString = "
 model{
 # Likelihood
